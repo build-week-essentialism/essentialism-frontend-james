@@ -36,6 +36,18 @@ const Login = styled.a`
   }
 `;
 
+const Logout = styled.a`
+  display: flex;
+  border-left: 1px solid white;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background: white;
+    color: black;
+    transition: all 0.2s ease-in;
+  }
+`;
+
 /***************************************************************************************************
  ********************************************* Component *******************************************
  **************************************************************************************************/
@@ -48,7 +60,9 @@ const TopNav = props => {
       <h3>Values</h3>
       <h3>My&nbsp;Values</h3>
       {loggedIN ? (
-        <h3>Logout</h3>
+        <Logout onClick={ev => props.logout(ev)}>
+          <h3>Logout</h3>
+        </Logout>
       ) : (
         <Login onClick={ev => props.raiseLoginModal(ev)}>
           <h3>Login</h3>

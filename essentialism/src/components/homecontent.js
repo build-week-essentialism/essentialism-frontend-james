@@ -1,34 +1,24 @@
-//Frameworks
 import React from 'react';
 import styled from 'styled-components';
-
-//Components
-import HomeSignIn from '../components/homesignin.js';
-import HomeContent from '../components/homecontent.js';
+// import PropTypes from 'prop-types';
 
 /***************************************************************************************************
  ********************************************** Styles *********************************************
  **************************************************************************************************/
 const DivWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  h1 {
-    text-align: center;
-  }
+  background-color: black;
+  color: white;
 `;
 
 /***************************************************************************************************
  ********************************************* Component *******************************************
  **************************************************************************************************/
-const Home = props => {
-  const loggedIN = props.isLoggedIn();
+const HomeContent = props => {
   return (
     <DivWrapper>
-      <h1>Welcome</h1>
-      {loggedIN ? <HomeContent /> : <HomeSignIn />}
+      <h1>This is the HomeContent Component</h1>
     </DivWrapper>
   );
 };
 
-export default Home;
+export default HomeContent;

@@ -1,3 +1,9 @@
+//Globals
+import {
+  viewContainerHeight,
+  viewContainerTopOrBottomPaddingPx
+} from './globals/styles.js';
+
 //Frameworks
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
@@ -6,6 +12,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 //Components
 import Header from './components/header/header.js';
 import LoginModal from './components/modals/loginmodal.js';
+import Home from './views/home.js';
 
 /***************************************************************************************************
  ********************************************* Variables *******************************************
@@ -22,22 +29,35 @@ export const server_url = isTestServerOn
 const DivWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 `;
 
 const GlobalStyle = createGlobalStyle`
-html,
-body,
-#root {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  background-color: rgb(243, 243, 243);
-  min-height: 100vh;
-}
+  html,
+  body,
+  #root {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    background-color: rgb(243, 243, 243);
+    min-height: 100vh;
+  }
 `;
+
+const DivViewsContainer = styled.div`
+  max-width: 800px;
+  min-height: ${viewContainerHeight};
+  width: 100%;
+  margin: 0 auto;
+  padding: ${viewContainerTopOrBottomPaddingPx};
+`;
+
+/***************************************************************************************************
+ ********************************************* Component *******************************************
+ **************************************************************************************************/
 
 class App extends Component {
   constructor() {
@@ -61,12 +81,19 @@ class App extends Component {
       : false;
   }
 
+  logout = ev => {
+    ev.preventDefault();
+    localStorage.clear();
+    this.props.history.push('/');
+  };
+
   render() {
     return (
       <DivWrapper>
         <GlobalStyle />
         <Header
           isLoggedIn={this.isLoggedIn}
+          logout={this.logout}
           raiseLoginModal={this.raiseLoginModal}
         />
         {this.state.isLoginModalRaised && (
@@ -75,7 +102,9 @@ class App extends Component {
             isLoggedIn={this.isLoggedIn}
           />
         )}
-        <h1>Hello World</h1>
+        <DivViewsContainer>
+          <Home isLoggedIn={this.isLoggedIn} />
+        </DivViewsContainer>
       </DivWrapper>
     );
   }
