@@ -1,12 +1,23 @@
+//Frameworks
 import React from 'react';
 import styled from 'styled-components';
+
+//Components
+import LoginForm from '../auth/login.js';
 
 /***************************************************************************************************
  ********************************************** Styles *********************************************
  **************************************************************************************************/
 const DivWrapper = styled.div`
-  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
   color: white;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
 `;
 
 /***************************************************************************************************
@@ -14,8 +25,11 @@ const DivWrapper = styled.div`
  **************************************************************************************************/
 const LoginModal = props => {
   return (
-    <DivWrapper>
-      <h1>This is the LoginModal Component</h1>
+    <DivWrapper onClick={ev => props.closeLoginModal(ev)}>
+      <LoginForm
+        isLoggedIn={props.isLoggedIn}
+        closeLoginModal={props.closeLoginModal}
+      />
     </DivWrapper>
   );
 };

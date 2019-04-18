@@ -10,11 +10,10 @@ import LoginModal from './components/modals/loginmodal.js';
 /***************************************************************************************************
  ********************************************* Variables *******************************************
  **************************************************************************************************/
-const isTestServerOn = false;
-const server = isTestServerOn
+const isTestServerOn = true;
+export const server_url = isTestServerOn
   ? 'http://localhost:5000'
   : 'https://essentialism.herokuapp.com';
-export const server_url = `${server}/`;
 
 /***************************************************************************************************
  ********************************************** Styles *********************************************
@@ -49,17 +48,15 @@ class App extends Component {
   }
 
   raiseLoginModal = ev => {
-    ev.stopPropagation();
     this.setState({ isLoginModalRaised: true });
   };
 
   closeLoginModal = ev => {
-    ev.stopPropagation();
     this.setState({ isLoginModalRaised: false });
   };
 
   isLoggedIn() {
-    return localStorage.getItem('token') && localStorage.getItem('id')
+    return localStorage.getItem('token') && localStorage.getItem('user_id')
       ? true
       : false;
   }
@@ -72,10 +69,13 @@ class App extends Component {
           isLoggedIn={this.isLoggedIn}
           raiseLoginModal={this.raiseLoginModal}
         />
-        <h1>Hello World</h1>
         {this.state.isLoginModalRaised && (
-          <LoginModal closeLoginModal={this.closeLoginModal} />
+          <LoginModal
+            closeLoginModal={this.closeLoginModal}
+            isLoggedIn={this.isLoggedIn}
+          />
         )}
+        <h1>Hello World</h1>
       </DivWrapper>
     );
   }
