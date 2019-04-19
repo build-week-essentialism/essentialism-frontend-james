@@ -1,7 +1,8 @@
 //Globals
 import {
   viewContainerHeight,
-  viewContainerTopOrBottomPaddingPx
+  viewContainerTopOrBottomPaddingPx,
+  headerHeight
 } from './globals/styles.js';
 
 //Frameworks
@@ -13,6 +14,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import Header from './components/header/header.js';
 import LoginModal from './components/modals/loginmodal.js';
 import Home from './views/home.js';
+import background_img from './assets/background.jpg';
 
 /***************************************************************************************************
  ********************************************* Variables *******************************************
@@ -29,7 +31,10 @@ export const server_url = isTestServerOn
 const DivWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  background-image: url(${background_img});
+  background-position: center;
+  background-size: cover;
+  z-index: 2;
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -45,6 +50,10 @@ const GlobalStyle = createGlobalStyle`
     background-color: rgb(243, 243, 243);
     min-height: 100vh;
   }
+`;
+
+const DivHeaderTopSpace = styled.div`
+  margin-top: ${headerHeight};
 `;
 
 const DivViewsContainer = styled.div`
@@ -91,6 +100,7 @@ class App extends Component {
     return (
       <DivWrapper>
         <GlobalStyle />
+        <DivHeaderTopSpace />
         <Header
           isLoggedIn={this.isLoggedIn}
           logout={this.logout}
@@ -103,7 +113,10 @@ class App extends Component {
           />
         )}
         <DivViewsContainer>
-          <Home isLoggedIn={this.isLoggedIn} />
+          <Home
+            isLoggedIn={this.isLoggedIn}
+            raiseLoginModal={this.raiseLoginModal}
+          />
         </DivViewsContainer>
       </DivWrapper>
     );

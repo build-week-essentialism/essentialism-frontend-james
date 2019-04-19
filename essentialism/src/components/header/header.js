@@ -10,11 +10,13 @@ import { headerHeight } from '../../globals/styles.js';
  ********************************************** Styles *********************************************
  **************************************************************************************************/
 const DivWrapper = styled.div`
+  position: absolute;
   display: flex;
   justify-content: space-between;
   background-color: white;
   width: 100%;
   height: ${headerHeight};
+  z-index: 3;
 `;
 
 const H1Title = styled.h1`
