@@ -34,6 +34,7 @@ const Header = props => {
         isLoggedIn={props.isLoggedIn}
         logout={props.logout}
         raiseLoginModal={props.raiseLoginModal}
+        homeLink={props.homeLink}
       />
     </DivWrapper>
   );

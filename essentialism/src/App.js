@@ -24,6 +24,14 @@ export const server_url = isTestServerOn
   ? 'http://localhost:5000'
   : 'https://essentialism.herokuapp.com';
 
+const urlLinks = {
+  home: '/',
+  newProjects: '/new-projects',
+  myProjects: '/my-projects',
+  browseValues: '/browse-values',
+  myValues: '/my-values'
+};
+
 /***************************************************************************************************
  ********************************************** Styles *********************************************
  **************************************************************************************************/
@@ -93,7 +101,7 @@ class App extends Component {
   logout = ev => {
     ev.preventDefault();
     localStorage.clear();
-    this.props.history.push('/');
+    this.props.history.push(`${urlLinks.home}`);
   };
 
   render() {
@@ -105,6 +113,7 @@ class App extends Component {
           isLoggedIn={this.isLoggedIn}
           logout={this.logout}
           raiseLoginModal={this.raiseLoginModal}
+          homeLink={`${urlLinks.home}`}
         />
         {this.state.isLoginModalRaised && (
           <LoginModal
@@ -113,9 +122,15 @@ class App extends Component {
           />
         )}
         <DivViewsContainer>
-          <Home
-            isLoggedIn={this.isLoggedIn}
-            raiseLoginModal={this.raiseLoginModal}
+          <Route
+            exact
+            path={`${urlLinks.home}`}
+            render={() => (
+              <Home
+                isLoggedIn={this.isLoggedIn}
+                raiseLoginModal={this.raiseLoginModal}
+              />
+            )}
           />
         </DivViewsContainer>
       </DivWrapper>

@@ -8,10 +8,9 @@ const DivWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  border: 1px solid black;
   align-items: center;
   padding-bottom: 100px;
-  background-color: rgb(243, 243, 243);
+  background-color: rgba(243, 243, 243, 0.5);
   h2 {
     text-align: center;
   }
@@ -25,13 +24,19 @@ const DivSeperator = styled.div`
 
   div,
   hr,
-  h3 {
+  h2 {
     display: inline-block;
     vertical-align: middle;
   }
 
   hr {
     width: 150px;
+    background-color: black;
+    height: 2px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
   }
 `;
 
@@ -66,11 +71,13 @@ const HomeSignIn = props => {
   return (
     <DivWrapper>
       <h2>Please</h2>
-      <Button type='button'>Login</Button>
+      <Button type='button' onClick={ev => props.raiseLoginModal(ev)}>
+        Login
+      </Button>
       <DivSeperator>
         <div>
           <hr />
-          <h3>&nbsp;OR&nbsp;</h3>
+          <h2>&nbsp;OR&nbsp;</h2>
           <hr />
         </div>
       </DivSeperator>

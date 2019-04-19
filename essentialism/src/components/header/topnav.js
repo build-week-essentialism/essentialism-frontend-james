@@ -48,6 +48,19 @@ const Logout = styled.a`
   }
 `;
 
+const NavItem = styled(Link)`
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    background: white;
+    color: black;
+    transition: all 0.2s ease-in;
+  }
+`;
+
 /***************************************************************************************************
  ********************************************* Component *******************************************
  **************************************************************************************************/
@@ -55,10 +68,21 @@ const TopNav = props => {
   const loggedIN = props.isLoggedIn();
   return (
     <DivWrapper>
-      <h3>Home</h3>
-      <h3>Projects</h3>
-      <h3>Values</h3>
-      <h3>My&nbsp;Values</h3>
+      <NavItem to={props.homeLink}>
+        <h3>Home</h3>
+      </NavItem>
+      <NavItem to='/'>
+        <h3>New&nbsp;Projects</h3>
+      </NavItem>
+      <NavItem to='/'>
+        <h3>My&nbsp;Projects</h3>
+      </NavItem>
+      <NavItem to='/'>
+        <h3>Values</h3>
+      </NavItem>
+      <NavItem to='/'>
+        <h3>My&nbsp;Values</h3>
+      </NavItem>
       {loggedIN ? (
         <Logout onClick={ev => props.logout(ev)}>
           <h3>Logout</h3>

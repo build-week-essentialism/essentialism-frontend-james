@@ -26,7 +26,11 @@ const Home = props => {
   return (
     <DivWrapper>
       <h1>Welcome</h1>
-      {loggedIN ? <HomeContent /> : <HomeSignIn />}
+      {loggedIN ? (
+        <HomeContent />
+      ) : (
+        <HomeSignIn raiseLoginModal={props.raiseLoginModal} />
+      )}
     </DivWrapper>
   );
 };

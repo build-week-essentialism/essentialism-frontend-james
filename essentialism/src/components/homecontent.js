@@ -1,13 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-// import PropTypes from 'prop-types';
 
 /***************************************************************************************************
  ********************************************** Styles *********************************************
  **************************************************************************************************/
 const DivWrapper = styled.div`
-  background-color: black;
-  color: white;
+  background-color: rgba(243, 243, 243, 0.5);
 `;
 
 /***************************************************************************************************
@@ -16,7 +14,10 @@ const DivWrapper = styled.div`
 const HomeContent = props => {
   return (
     <DivWrapper>
-      <h1>This is the HomeContent Component</h1>
+      <h1>New Projects</h1>
+      <h1>My Projects</h1>
+      <h1>Browse Values</h1>
+      <h1>My Values</h1>
     </DivWrapper>
   );
 };
