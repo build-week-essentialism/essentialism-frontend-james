@@ -71,10 +71,10 @@ const TopNav = props => {
       <NavItem to={props.homeLink}>
         <h3>Home</h3>
       </NavItem>
-      <NavItem to='/'>
-        <h3>New&nbsp;Projects</h3>
+      <NavItem to={props.homeLink}>
+        <h3>New&nbsp;Project</h3>
       </NavItem>
-      <NavItem to='/'>
+      <NavItem to={props.myProjectsLink}>
         <h3>My&nbsp;Projects</h3>
       </NavItem>
       <NavItem to='/'>

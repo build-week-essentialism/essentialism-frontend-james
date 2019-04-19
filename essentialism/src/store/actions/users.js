@@ -6,8 +6,6 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
 export const login = credentials => dispatch => {
-  console.log('creds =', credentials);
-  console.log('server_url =', server_url);
   dispatch({ type: LOGIN_LOADING });
   return axios
     .post(`${server_url}/api/auth/login`, credentials)

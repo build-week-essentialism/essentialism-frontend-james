@@ -14,6 +14,8 @@ import styled, { createGlobalStyle } from 'styled-components';
 import Header from './components/header/header.js';
 import LoginModal from './components/modals/loginmodal.js';
 import Home from './views/home.js';
+import Projects from './views/projects.js';
+import Project from './components/project.js';
 import background_img from './assets/background.jpg';
 
 /***************************************************************************************************
@@ -26,7 +28,7 @@ export const server_url = isTestServerOn
 
 const urlLinks = {
   home: '/',
-  newProjects: '/new-projects',
+  newProject: '/new-project',
   myProjects: '/my-projects',
   browseValues: '/browse-values',
   myValues: '/my-values'
@@ -114,6 +116,7 @@ class App extends Component {
           logout={this.logout}
           raiseLoginModal={this.raiseLoginModal}
           homeLink={`${urlLinks.home}`}
+          myProjectsLink={`${urlLinks.myProjects}`}
         />
         {this.state.isLoginModalRaised && (
           <LoginModal
@@ -131,6 +134,21 @@ class App extends Component {
                 raiseLoginModal={this.raiseLoginModal}
               />
             )}
+          />
+          <Route
+            exact
+            path={`${urlLinks.myProjects}`}
+            render={() => (
+              <Projects
+                isLoggedIn={this.isLoggedIn}
+                myProjectsLink={`${urlLinks.myProjects}`}
+              />
+            )}
+          />
+          <Route
+            exact
+            path={`${urlLinks.myProjects}/:id`}
+            render={() => <Project isLoggedIn={this.isLoggedIn} />}
           />
         </DivViewsContainer>
       </DivWrapper>

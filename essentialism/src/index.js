@@ -10,23 +10,21 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
 // reducers
-import {
-	UsersReducer
-} from './store/reducers/index.js';
+import { UsersReducer, ProjectsReducer } from './store/reducers/index.js';
 
 const rootReducer = combineReducers({
-	users: UsersReducer
+  users: UsersReducer,
+  projects: ProjectsReducer
 });
 
 // store
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
-	<Provider store = { store }>
-		<Router>
-			<Route path = '/' component = { App } />
-		</Router>
-	</Provider>,
-	document.getElementById('root')
+  <Provider store={store}>
+    <Router>
+      <Route path='/' component={App} />
+    </Router>
+  </Provider>,
+  document.getElementById('root')
 );
-

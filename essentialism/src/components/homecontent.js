@@ -14,7 +14,7 @@ const DivWrapper = styled.div`
 const HomeContent = props => {
   return (
     <DivWrapper>
-      <h1>New Projects</h1>
+      <h1>New Project</h1>
       <h1>My Projects</h1>
       <h1>Browse Values</h1>
       <h1>My Values</h1>
